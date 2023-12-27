@@ -1,0 +1,15 @@
+{
+  "name" : "luna",
+  "version-string" : "0.1.0.0",
+  "builtin-baseline" : "04f7d34c26defd9a54397dcbbb26b1ce3573614d",
+  "dependencies" : [ {
+    "name" : "glfw3",
+    "version>=" : "3.3.9"
+  }, {
+    "name" : "imgui",
+    "version>=" : "1.90#2"
+  }, {
+    "name" : "gtest",
+    "version>=" : "1.14.0"
+  } ]
+}

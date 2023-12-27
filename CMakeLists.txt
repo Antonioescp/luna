@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 3.26)
 
-ADD_LIBRARY(compiler_options INTERFACE)
-ADD_LIBRARY(compiler_features INTERFACE)
+ADD_LIBRARY(luna_compiler_options INTERFACE)
+ADD_LIBRARY(luna_compiler_features INTERFACE)
 
 PROJECT(Luna
         VERSION 0.1.0.0
@@ -9,16 +9,18 @@ PROJECT(Luna
         LANGUAGES CXX
 )
 
-TARGET_COMPILE_FEATURES(compiler_features INTERFACE cxx_std_20)
+TARGET_COMPILE_FEATURES(luna_compiler_features INTERFACE cxx_std_20)
 
 IF (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    TARGET_COMPILE_OPTIONS(compiler_options INTERFACE /W4 /WX /permissive-)
+    TARGET_COMPILE_OPTIONS(luna_compiler_options INTERFACE /W4 /WX /permissive-)
 ELSE ()
-    TARGET_COMPILE_OPTIONS(compiler_options INTERFACE -Wall -Wextra -pedantic -Werror)
+    TARGET_COMPILE_OPTIONS(luna_compiler_options INTERFACE -Wall -Wextra -pedantic -Werror)
 ENDIF ()
 
 ADD_EXECUTABLE(${PROJECT_NAME}
         src/main.cpp)
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} PRIVATE compiler_options compiler_features)
+ADD_SUBDIRECTORY(external/rupe)
 
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} PUBLIC luna_compiler_options luna_compiler_features RupeLib)
+TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)

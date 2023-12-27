@@ -1,0 +1,4 @@
+[submodule "rupe"]
+	path = external/rupe
+	url = https://github.com/Antonioescp/rupe.git
+	branch = main
