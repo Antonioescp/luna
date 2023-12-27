@@ -1,3 +1,12 @@
+# IDE
+.idea/
+
+# output
+*cmake*/
+bin/
+debug/
+build/
+
 # Prerequisites
 *.d
 
