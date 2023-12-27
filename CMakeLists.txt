@@ -22,5 +22,5 @@ ADD_EXECUTABLE(${PROJECT_NAME}
 
 ADD_SUBDIRECTORY(external/rupe)
 
-TARGET_LINK_LIBRARIES(${PROJECT_NAME} PUBLIC luna_compiler_options luna_compiler_features RupeLib)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} PUBLIC luna_compiler_options luna_compiler_features Rupe)
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
