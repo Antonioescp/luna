@@ -11,5 +11,8 @@
   }, {
     "name" : "gtest",
     "version>=" : "1.14.0"
+  }, {
+    "name" : "log4cplus",
+    "version>=" : "2.1.1"
   } ]
 }

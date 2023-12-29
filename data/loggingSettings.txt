@@ -1,0 +1,14 @@
+log4cplus.rootLogger=debug, stdout, file
+
+# stdout
+log4cplus.appender.stdout=log4cplus::ConsoleAppender
+log4cplus.appender.stdout.layout=log4cplus::PatternLayout
+log4cplus.appender.stdout.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
+
+# file
+log4cplus.appender.file=log4cplus::RollingFileAppender
+log4cplus.appender.file.File=sample.log
+log4cplus.appender.file.MaxFileSize=1024MB
+log4cplus.appender.file.MaxBackUpIndex=1
+log4cplus.appender.file.layout=log4cplus::PatternLayout
+log4cplus.appender.file.layout.ConversionPattern=%5p [%t] (%F:%L) - %m%n
