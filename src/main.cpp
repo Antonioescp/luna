@@ -2,11 +2,20 @@
 // Created by Toni on 26/12/2023.
 //
 
+#include <format>
+
+#include <luna/core/Application.hpp>
 #include <luna/logging/Logging.hpp>
 
 int main() {
-    log4cplus::Initializer init{};
-    log4cplus::PropertyConfigurator::doConfigure("../data/loggingSettings.txt");
-    Luna::Logging root{};
-    root.info("Hello there");
+    Luna::Core::Application app{"Hello world"};
+
+    Luna::Logging mainLogger{"main" };
+
+    try {
+        app.run();
+    }
+    catch (const std::exception& exception) {
+        mainLogger.error(std::format("An exception occurred: {}", exception.what()));
+    }
 }

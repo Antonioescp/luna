@@ -17,7 +17,7 @@ namespace Luna {
     class Logging {
     public:
 
-        explicit Logging(const std::string& name = "");
+        explicit Logging(const std::string& logger = "");
 
         void debug(const std::string& message, const std::string& source = "", std::source_location location = std::source_location::current());
         void info(const std::string& message, const std::string& source = "", std::source_location location = std::source_location::current());

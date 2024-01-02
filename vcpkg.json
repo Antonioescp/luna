@@ -14,5 +14,8 @@
   }, {
     "name" : "log4cplus",
     "version>=" : "2.1.1"
+  }, {
+    "name" : "glad",
+    "version>=" : "0.1.36"
   } ]
 }

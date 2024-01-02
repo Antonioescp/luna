@@ -20,12 +20,18 @@ ENDIF ()
 ADD_EXECUTABLE(${PROJECT_NAME}
         src/main.cpp
         src/logging/Logging.cpp
-        include/luna/logging/Logging.hpp)
+        include/luna/logging/Logging.hpp
+        src/core/Application.cpp
+        include/luna/core/Application.hpp)
 
 ADD_SUBDIRECTORY(external/rupe)
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME} PUBLIC luna_compiler_options luna_compiler_features Rupe)
 TARGET_INCLUDE_DIRECTORIES(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# glad
+FIND_PACKAGE(glad CONFIG REQUIRED)
+TARGET_LINK_LIBRARIES(${PROJECT_NAME} PRIVATE glad::glad)
 
 # GLFW3
 FIND_PACKAGE(glfw3 CONFIG REQUIRED)
@@ -38,3 +44,7 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME} PRIVATE imgui::imgui)
 # Log4Cplus
 FIND_PACKAGE(log4cplus CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE log4cplus::log4cplus)
+
+# Config files
+CONFIGURE_FILE(${CMAKE_CURRENT_SOURCE_DIR}/data/config/logging.ini
+    ${CMAKE_BINARY_DIR}/logging.ini)

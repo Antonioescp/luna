@@ -6,9 +6,9 @@
 
 #include <filesystem>
 
-Luna::Logging::Logging(const std::string& name) {
-    m_logger = (name.length() > 0)
-            ? log4cplus::Logger::getInstance(name)
+Luna::Logging::Logging(const std::string& logger) {
+    m_logger = (logger.length() > 0)
+            ? log4cplus::Logger::getInstance(logger)
             : log4cplus::Logger::getRoot();
 }
 
