@@ -22,7 +22,9 @@ ADD_EXECUTABLE(${PROJECT_NAME}
         src/logging/Logging.cpp
         include/luna/logging/Logging.hpp
         src/core/Application.cpp
-        include/luna/core/Application.hpp)
+        include/luna/core/Application.hpp
+        src/core/LunaApplication.cpp
+        include/luna/core/LunaApplication.hpp)
 
 ADD_SUBDIRECTORY(external/rupe)
 

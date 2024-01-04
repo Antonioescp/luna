@@ -4,18 +4,23 @@
 
 #include <format>
 
-#include <luna/core/Application.hpp>
+#include <luna/core/LunaApplication.hpp>
 #include <luna/logging/Logging.hpp>
 
-int main() {
-    Luna::Core::Application app{"Hello world"};
+using namespace Luna;
+using namespace Luna::Core;
 
-    Luna::Logging mainLogger{"main" };
+int main() {
+    LunaApplication app{"Luna Playground"};
+
+    Logging mainLogger{"main" };
 
     try {
         app.run();
     }
     catch (const std::exception& exception) {
-        mainLogger.error(std::format("An exception occurred: {}", exception.what()));
+        mainLogger.error(std::format("An exception of type {} occurred: {}",
+                                     typeid(exception).name(),
+                                     exception.what()));
     }
 }

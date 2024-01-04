@@ -15,6 +15,11 @@
 
 namespace Luna::Core {
 
+    class ApplicationError : public std::exception {
+    public:
+        using std::exception::exception;
+    };
+
     class Application {
     public:
         explicit Application(const std::string& title, int width = 640, int height = 480);
@@ -25,14 +30,22 @@ namespace Luna::Core {
     private:
         GLFWwindow* m_window{ nullptr };
         log4cplus::Initializer m_log4cplusInitializer{};
-        Logging m_classLogger{ToString(Application) };
         double m_deltaTime{};
         double m_previousTime{};
         bool m_isInitialized{};
 
-        static int OpenGLMajorVersion;
-        static int OpenGLMinorVersion;
+        static Logging classLogger;
+        constexpr static int OpenGLMajorVersion{ 4 };
+        constexpr static int OpenGLMinorVersion{ 3 };
 
+        virtual void onDrawGui() = 0;
+        virtual void onRender() = 0;
+
+        void render();
+        void initializeImGui();
+        void startImGuiRender();
+
+        static void finishImGuiRender();
         static void onError(int error, const char* description);
         static void onClose(GLFWwindow* window);
         static void onSizeChanged(GLFWwindow* window, int width, int height);
